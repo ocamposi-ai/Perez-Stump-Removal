@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>[Business Name] | Tree & Stump Removal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --green: #2f6b3c;
+      --dark: #1f2a24;
+      --light: #f5f7f4;
+      --accent: #c98a3b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--dark);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header .logo {
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 1rem;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      background: linear-gradient(
+          rgba(0, 0, 0, 0.45),
+          rgba(0, 0, 0, 0.6)
+        ),
+        url("hero-trees.jpg") center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #b2772f;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 1px solid #fff;
+      margin-left: 0.5rem;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2.section-title {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: var(--green);
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      color: var(--dark);
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-photo {
+      width: 100%;
+      border-radius: 0.75rem;
+      background: #d9e3da;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4b5a4f;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .badge-row {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: #e3efe5;
+      color: var(--green);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
+      gap: 2rem;
+    }
+
+    form label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border-radius: 0.5rem;
+      border: 1px solid #cfd6cf;
+      font-size: 0.9rem;
+      margin-bottom: 0.9rem;
+      outline: none;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 2px rgba(47, 107, 60, 0.15);
+    }
+
+    form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .contact-details p {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-details strong {
+      font-weight: 600;
+    }
+
+    .highlight {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    footer {
+      background: var(--dark);
+      color: #cfd6cf;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 800px) {
+      .about,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        margin-left: 0;
+        margin-right: 1rem;
+        margin-bottom: 0.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">[Business Name]</div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Safe, Professional Tree & Stump Removal</h1>
+      <p>
+        Serving [Milford] with fast, reliable tree and stump removal—so your yard is safer, cleaner, and ready to enjoy.
+      </p>
+      <div>
+        <a href="#contact" class="btn btn-primary">Request a Free Quote</a>
+        <a href="tel:[513-512-2311]" class="btn btn-outline">Call [513-512-2311]</a>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="services">
+      <h2 class="section-title">Services</h2>
+      <p class="section-subtitle">
+        Fully insured, safety‑focused work with attention to detail on every job.
+      </p>
+
+      <div class="services-grid">
+        <div class="card">
+          <h3>Tree Removal</h3>
+          <p>
+            Safe removal of dead, hazardous, or unwanted trees using proper equipment and techniques to protect your home and property.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Stump Grinding & Removal</h3>
+          <p>
+            Grind or remove stumps so you can reclaim your yard, improve curb appeal, and prepare for new landscaping.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Storm Damage Cleanup</h3>
+          <p>
+            Emergency and post‑storm cleanup for fallen limbs and damaged trees to make your property safe again.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Trimming & Pruning</h3>
+          <p>
+            Pruning and trimming to keep trees healthy, shaped, and away from roofs, driveways, and power lines.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <div class="about">
+        <div>
+          <p>
+            <span class="highlight">[His Name]</span> is the owner and operator of [Business Name], a local tree and stump
+            removal service based in [City / Area]. He takes pride in honest communication, fair pricing, and leaving every
+            job site cleaner than he found it.
+          </p>
+          <p>
+            Whether it’s a single stump or a full tree removal, every project is treated with the same level of care and
+            professionalism.
+          </p>
+          <div class="badge-row">
+            <span class="badge">Locally owned</span>
+            <span class="badge">Fully insured</span>
+            <span class="badge">Free estimates</span>
+            <span class="badge">Residential & small commercial</span>
+          </div>
+        </div>
+        <div class="about-photo">
+          Add a photo of him working, his truck, or a before/after shot here.
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Get a Free Quote</h2>
+      <div class="contact-grid">
+        <form>
+          <label for="name">Name</label>
+          <input id="name" type="text" name="name" placeholder="Your name" required />
+
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" placeholder="you@example.com" required />
+
+          <label for="phone">Phone</label>
+          <input id="phone" type="tel" name="phone" placeholder="(555) 555‑5555" />
+
+          <label for="message">Project details</label>
+          <textarea id="message" name="message" placeholder="Tell us about the tree or stump you need removed..." required></textarea>
+
+          <button type="submit" class="btn btn-primary">Send Request</button>
+        </form>
+
+        <div class="contact-details">
+          <p><strong>Phone:</strong> <a href="tel:[phone-number]">[phone-number]</a></p>
+          <p><strong>Email:</strong> <a href="mailto:[email-address]">[email-address]</a></p>
+          <p><strong>Service area:</strong> [City / Region]</p>
+          <p><strong>Hours:</strong> Mon–Sat · 8:00am – 6:00pm</p>
+          <p style="margin-top: 1rem;">
+            Share a few photos of the tree or stump when you reach out—this helps with faster, more accurate quotes.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> [Business Name]. All rights reserved.
+  </footer>
+
+  <script>
+    // Auto-update year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
